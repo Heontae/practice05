@@ -28,10 +28,17 @@ public class BookShop {
 				displayBookInfo(books);
 				break;
 			case 2:// 도서 대여하기
-				System.out.print("대여하실 책의 번호를 입력해주세요: ");
-				int num = scanner.nextInt();
+				while (true) {
 
-				books[num - 1].rent();
+					System.out.print("대여하실 책의 번호를 입력해주세요: ");
+					int num = scanner.nextInt();
+					if (0 < num && num < books.length) {
+						books[num - 1].rent();
+						break;
+					} else {
+						System.out.println("잘못입력하였습니다.");
+					}
+				}
 				break;
 			case 3:// 대여중인 대서목록보기
 				System.out.println("*****현재 대여중인 책목록*****");
@@ -42,9 +49,16 @@ public class BookShop {
 				}
 				break;
 			case 4:// 반납하기
-				System.out.print("반납하실 책의 번호를 입력해주세요: ");
-				int back = scanner.nextInt();
-				books[back - 1].back();
+				while (true) {
+					System.out.print("반납하실 책의 번호를 입력해주세요: ");
+					int back = scanner.nextInt();
+					if (0 < back && back < books.length) {
+						books[back - 1].back();
+						break;
+					} else {
+						System.out.println("잘못입력하였습니다.");
+					}
+				}
 				break;
 			case 5:// 프로그램 종료
 				System.out.println("프로그램을 종료합니다.");

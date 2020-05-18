@@ -81,11 +81,11 @@ public class Book {
 		}
 	}
 
-	// to String
+// to String
 
-	@Override
-	public String toString() {
-		return "Book [bookNo=" + bookNo + ", title=" + title + ", author=" + author + ", stateCode=" + stateCode + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Book [bookNo=" + bookNo + ", title=" + title + ", author=" + author + ", stateCode=" + stateCode + "]";
+//	}
 
 }
