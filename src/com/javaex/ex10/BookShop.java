@@ -20,37 +20,37 @@ public class BookShop {
 		boolean exit = true;
 		Scanner scanner = new Scanner(System.in);
 		while (exit) {
-			System.out.println("1.도서정보 보기 2.대여하기 3.대여목록 보기 4.반납하기 5.종료하기");
+			System.out.print("1.도서정보 보기 2.대여하기 3.대여중인 책목록 보기 4.반납하기 5.종료하기 \n>>");
 			int choice = scanner.nextInt();
 			switch (choice) {
-			case 1://도서정보 보기
+			case 1:// 도서정보 보기
 				System.out.println("*****도서 정보 출력하기******");
 				displayBookInfo(books);
 				break;
-			case 2://도서 대여하기
-				System.out.println("대여하실 책의 번호를 입력해주세요.");
+			case 2:// 도서 대여하기
+				System.out.print("대여하실 책의 번호를 입력해주세요: ");
 				int num = scanner.nextInt();
 
 				books[num - 1].rent();
 				break;
-			case 3://대여중인 대서목록보기
-				System.out.println("현재 대여중인 책목록");
+			case 3:// 대여중인 대서목록보기
+				System.out.println("*****현재 대여중인 책목록*****");
 				for (int i = 0; i < books.length; i++) {
 					if (books[i].stateCode == 0) {
 						books[i].rent2();
 					}
 				}
 				break;
-			case 4://반납하기
-				System.out.println("반납하실 책의 번호를 입력해주세요.");
+			case 4:// 반납하기
+				System.out.print("반납하실 책의 번호를 입력해주세요: ");
 				int back = scanner.nextInt();
 				books[back - 1].back();
 				break;
-			case 5://프로그램 종료
+			case 5:// 프로그램 종료
 				System.out.println("프로그램을 종료합니다.");
 				exit = false;
 				break;
-			default://잘못된 값 입력
+			default:// 잘못된 값 입력
 				System.out.println("잘못 입력하였습니다.");
 				break;
 
@@ -59,6 +59,7 @@ public class BookShop {
 		}
 		scanner.close();
 	}
+
 	private static void displayBookInfo(Book[] books) {
 		for (int i = 0; i < books.length; i++) {
 			books[i].print();
