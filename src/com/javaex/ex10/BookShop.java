@@ -3,7 +3,6 @@ package com.javaex.ex10;
 import java.util.Scanner;
 
 public class BookShop {
-
 	public static void main(String[] args) {
 		Book[] books = new Book[10];
 
@@ -18,30 +17,52 @@ public class BookShop {
 		books[8] = new Book(9, "태백산맥", "조정래");
 		books[9] = new Book(10, "풀하우스", "원수연");
 
-		System.out.println("*****도서 정보 출력하기******");
-		displayBookInfo(books);
-
+		boolean exit = true;
 		Scanner scanner = new Scanner(System.in);
-		System.out.print("대여 하고 싶은 책의 번호를 입력하세요:");
-		int num = scanner.nextInt();
+		while (exit) {
+			System.out.println("1.도서정보 보기 2.대여하기 3.대여목록 보기 4.반납하기 5.종료하기");
+			int choice = scanner.nextInt();
+			switch (choice) {
+			case 1://도서정보 보기
+				System.out.println("*****도서 정보 출력하기******");
+				displayBookInfo(books);
+				break;
+			case 2://도서 대여하기
+				System.out.println("대여하실 책의 번호를 입력해주세요.");
+				int num = scanner.nextInt();
 
-		// (1) 입력된 번호에 맞는 책을 찾아 대여 되었음(상태코드=0)을 체크 합니다.
-		// 코드작성
+				books[num - 1].rent();
+				break;
+			case 3://대여중인 대서목록보기
+				System.out.println("현재 대여중인 책목록");
+				for (int i = 0; i < books.length; i++) {
+					if (books[i].stateCode == 0) {
+						books[i].rent2();
+					}
+				}
+				break;
+			case 4://반납하기
+				System.out.println("반납하실 책의 번호를 입력해주세요.");
+				int back = scanner.nextInt();
+				books[back - 1].back();
+				break;
+			case 5://프로그램 종료
+				System.out.println("프로그램을 종료합니다.");
+				exit = false;
+				break;
+			default://잘못된 값 입력
+				System.out.println("잘못 입력하였습니다.");
+				break;
 
-		books[num - 1].rent();
+			}
 
-		System.out.println("*****도서 정보 출력하기******");
-		displayBookInfo(books);
-
+		}
 		scanner.close();
 	}
-
-	// (2)전달받은 배열을 모두 출력하는 메소드
 	private static void displayBookInfo(Book[] books) {
 		for (int i = 0; i < books.length; i++) {
 			books[i].print();
 		}
 		System.out.println();
-		// 코드작성
 	}
 }
