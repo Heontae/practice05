@@ -5,12 +5,9 @@ public class StringUtil {
 
 	public static String concatString(String[] strArray) {
 		// 메소드 내용작성
+		result ="";
 		for (int i = 0; i < strArray.length; i++) {
-			if (result == null) {
-				result = strArray[i];
-			} else {
 				result += strArray[i];
-			}
 		}
 		return result;
 	}
